@@ -11,7 +11,7 @@ route.get('/:uuid', async (req, res) => {
     if(!file){
         res.send("Link is expired....");
     }
-    res.send({"success": "true", "link": `${process.env.APP_BASE_URL}/files/download/${file.uuid}`});
+    res.send({"success": "true", "link": `${process.env.APP_BASE_URL}/file/download/${file.uuid}`});
 });
 
 export default route;
