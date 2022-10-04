@@ -31,7 +31,7 @@
             "schema": {
               "type": "object",
               "items": {
-                "$ref": "#/definitions/downloadLinkResponse"
+                "$ref": "#/definitions/filesResponse"
               }
             }
           },
@@ -64,7 +64,7 @@
             "schema": {
               "type": "object",
               "items": {
-                "$ref": "#/definitions/downloadLinkResponse"
+                "$ref": "#/definitions/filesResponse"
               }
             }
           },
@@ -97,7 +97,7 @@
             "schema": {
               "type": "file",
               "items": {
-                "$ref": "#/definitions/downloadLinkResponse"
+                "$ref": "#/definitions/imageResponse"
               }
             }
           },
