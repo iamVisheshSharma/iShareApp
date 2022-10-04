@@ -8,8 +8,8 @@
       "email": "visheshsharma01232@gmail.com"
     }
   },
-  "schemes": ["http"],
-  "host": "localhost:5000",
+  "schemes": ["https"],
+  "host": "sharing-api.herokuapp.com",
   "paths": {
     "/file/{uuid}": {
       "get": {
