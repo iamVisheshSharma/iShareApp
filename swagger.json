@@ -1,0 +1,149 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple NodeJS API project for sharing files over internet",
+    "version": "1.0.0",
+    "title": "File Sharing API",
+    "contact": {
+      "email": "visheshsharma01232@gmail.com"
+    }
+  },
+  "schemes": ["http"],
+  "host": "localhost:5000",
+  "paths": {
+    "/file/{uuid}": {
+      "get": {
+        "summary": "Get file download link",
+        "description": "Get file download link",
+        "produces": ["application/json"],
+        "parameters": [
+					{
+            "name": "uuid",
+            "in": "path",
+            "description": "file uuid that needs to be fetch",
+            "required": true,
+            "type": "string"
+          }
+				],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/downloadLinkResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/ushare/files": {
+      "post": {
+        "summary": "Upload the file",
+        "description": "Upload the file",
+        "consumes": ["multipart/form-data"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "myfile",
+            "description": "The file to upload.",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/downloadLinkResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/file/download/{uuid}": {
+      "get": {
+        "summary": "Download the file",
+        "description": "Download the file",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "File uuid that needs to be download",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "file",
+              "items": {
+                "$ref": "#/definitions/downloadLinkResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/ushare/send": {
+      "post": {
+        "summary": "Send mail with download button to your friend.",
+        "description": "Send mail with download button to your friend.",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/emailResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    }
+  }
+}
